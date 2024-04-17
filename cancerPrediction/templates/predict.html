@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ML API</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="/static/predict.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="login">
+
+      <form action="/predict/" method="post">
+        <input
+          type="text"
+          name="radius_mean"
+          placeholder="Radius Mean"
+          required="required"
+        />
+        <input
+          type="text"
+          name="texture_mean"
+          placeholder="Texture Mean"
+          required="required"
+        />
+        <input
+          type="text"
+          name="area_mean"
+          placeholder="Area Mean"
+          required="required"
+        />
+        <input
+          type="text"
+          name="smoothness_mean"
+          placeholder="Smoothness Mean"
+          required="required"
+        />
+        <input
+          type="text"
+          name="compactness_mean"
+          placeholder="Compactness Mean"
+          required="required"
+        />
+        <input
+          type="text"
+          name="concavity_mean"
+          placeholder="Concavity Mean"
+          required="required"
+        />
+        <input
+          type="text"
+          name="concave_points_mean"
+          placeholder="Concave Points Mean"
+          required="required"
+        />
+        <input
+          type="text"
+          name="symmetry_mean"
+          placeholder="Symmetry Mean"
+          required="required"
+        />
+        <input
+          type="text"
+          name="fractal_dimension_mean"
+          placeholder="Fractal Dimension Mean"
+          required="required"
+        />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">
+          Predict
+        </button>
+      </form>
+
+      <br />
+      <br />
+      {{ prediction_text }}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+<form action="{% url 'getinput'%}" method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="subjectName" class="form-label">Enter patient's name:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="subjectName"
+      name="subjectName"
+    />
+    <label for="subjectEmail" class="form-label"
+      >Enter patients email id:</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="subjectEmail"
+      name="subjectEmail"
+    />
+    <label for="subjectPhone" class="form-label"
+      >Enter patient phone number:</label
+    >
+    <input
+      type="number"
+      class="form-control"
+      id="subjectPhone"
+      name="subjectPhone"
+    />
+  </div>
+    <button type="submit" value="Submit" class="btn btn-danger" >Submit</button>
+</form>
+<div>
+  {% for key, value in form_submission.items %} <br />{{value}} {% endfor %}
+</div>
+{% endblock %}

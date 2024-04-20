@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path("form", views.predictForm, name="getinputforprediction"),
-    path("getprediction", views.getInput, name="getprediction"),
+    path("getprediction", views.getFormInput, name="getprediction"),
+    path("getbatchprediction", views.getCSVInput, name="getbatchprediction"),
 ]

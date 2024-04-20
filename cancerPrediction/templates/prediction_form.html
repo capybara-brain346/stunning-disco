@@ -1,358 +1,377 @@
 {% extends 'base.html' %}{% block title%} Cancer Prediction {% endblock %}
 {%block content %}
-<form action="{% url 'getprediction'%}" method="post">
-  {% csrf_token %}
-  <div class="mb-3">
-    <label for="subjectName" class="form-label">Enter patient's name:</label>
-    <input
-      type="text"
-      class="form-control"
-      id="subjectName"
-      name="subjectName"
-      required
-    />
-    <label for="subjectEmail" class="form-label"
-      >Enter patients email id:</label
-    >
-    <input
-      type="text"
-      class="form-control"
-      id="subjectEmail"
-      name="subjectEmail"
-      required
-    />
-    <label for="subjectPhone" class="form-label"
-      >Enter patient phone number:</label
-    >
-    <input
-      type="number"
-      class="form-control"
-      id="subjectPhone"
-      name="subjectPhone"
-      required
-    />
-    <ul>
-      <li>
-        <label class="form-check-label" for="gender">Gender: </label>
-        <br />
-        <input
-          class="form-check-input"
-          type="radio"
-          id="gender_male"
-          name="gender"
-          value="male"
-          required
-        />
-        Male<br />
-        <input
-          class="form-check-input"
-          type="radio"
-          id="gender_female"
-          name="gender"
-          value="female"
-          required
-        />
-        Female<br />
-      </li>
-      <li>
-        <label class="form-label" for="age">Age: </label>
-        <input
-          class="form-control"
-          type="number"
-          id="age"
-          name="age"
-          min="18"
-        />
-      </li>
-      <li>
-        <label class="form-check-label" for="smoking">Smoking: </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="smoking"
-          id="smoking_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="smoking"
-          id="smoking_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="yellow_fingers"
-          >Yellow fingers:
-        </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="yellow_fingers"
-          id="yellow_fingers_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="yellow_fingers"
-          id="yellow_fingers_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="anxiety">Anxiety: </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="anxiety"
-          id="anxiety_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="anxiety"
-          id="anxiety_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="peer_pressure"
-          >Peer pressure to smoke:
-        </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="peer_pressure"
-          id="peer_pressure_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="peer_pressure"
-          id="peer_pressure_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="chronic_disease"
-          >Chronic disease (e.g., COPD):
-        </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="chronic_disease"
-          id="chronic_disease_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="chronic_disease"
-          id="chronic_disease_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="fatigue">Fatigue: </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="fatigue"
-          id="fatigue_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="fatigue"
-          id="fatigue_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="allergy">Allergies: </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="allergy"
-          id="allergy_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="allergy"
-          id="allergy_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="wheezing">Wheezing: </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="wheezing"
-          id="wheezing_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="wheezing"
-          id="wheezing_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="alcohol_consuming"
-          >Alcohol consumption:
-        </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="alcohol_consuming"
-          id="alcohol_consuming_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="alcohol_consuming"
-          id="alcohol_consuming_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="coughing">Coughing: </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="coughing"
-          id="coughing_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="coughing"
-          id="coughing_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="shortness_of_breath"
-          >Shortness of breath:
-        </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="shortness_of_breath"
-          id="shortness_of_breath_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="shortness_of_breath"
-          id="shortness_of_breath_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="swallowing_difficulty"
-          >Swallowing difficulty:
-        </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="swallowing_difficulty"
-          id="swallowing_difficulty_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="swallowing_difficulty"
-          id="swallowing_difficulty_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-      <li>
-        <label class="form-check-label" for="chest_pain">Chest pain: </label>
-        <input
-          class="form-check-input"
-          type="radio"
-          name="chest_pain"
-          id="chest_pain_yes"
-          value="yes"
-          required
-        />
-        Yes
-        <input
-          class="form-check-input"
-          type="radio"
-          name="chest_pain"
-          id="chest_pain_no"
-          value="no"
-          required
-        />
-        No
-      </li>
-    </ul>
-  </div>
-  <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
-</form>
 <hr />
+<h1 style="margin-left: 468px">Enter Patient Details</h1>
+<hr />
+<div style="margin: auto; width: 60rem">
+  <form action="{% url 'getprediction'%}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="subjectName" class="form-label">Enter patient's name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="subjectName"
+        name="subjectName"
+        required
+      />
+      <label for="subjectEmail" class="form-label"
+        >Enter patients email id:</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="subjectEmail"
+        name="subjectEmail"
+        required
+      />
+      <label for="subjectPhone" class="form-label"
+        >Enter patient phone number:</label
+      >
+      <input
+        type="number"
+        class="form-control"
+        id="subjectPhone"
+        name="subjectPhone"
+        required
+      />
+      <ul>
+        <li>
+          <label class="form-check-label" for="gender">Gender: </label>
+          <br />
+          <input
+            class="form-check-input"
+            type="radio"
+            id="gender_male"
+            name="gender"
+            value="male"
+            required
+          />
+          Male<br />
+          <input
+            class="form-check-input"
+            type="radio"
+            id="gender_female"
+            name="gender"
+            value="female"
+            required
+          />
+          Female<br />
+        </li>
+        <li>
+          <label class="form-label" for="age">Age: </label>
+          <input
+            class="form-control"
+            type="number"
+            id="age"
+            name="age"
+            min="18"
+          />
+        </li>
+        <li>
+          <label class="form-check-label" for="smoking">Smoking: </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="smoking"
+            id="smoking_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="smoking"
+            id="smoking_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="yellow_fingers"
+            >Yellow fingers:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="yellow_fingers"
+            id="yellow_fingers_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="yellow_fingers"
+            id="yellow_fingers_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="anxiety">Anxiety: </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="anxiety"
+            id="anxiety_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="anxiety"
+            id="anxiety_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="peer_pressure"
+            >Peer pressure to smoke:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="peer_pressure"
+            id="peer_pressure_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="peer_pressure"
+            id="peer_pressure_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="chronic_disease"
+            >Chronic disease (e.g., COPD):
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="chronic_disease"
+            id="chronic_disease_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="chronic_disease"
+            id="chronic_disease_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="fatigue">Fatigue: </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="fatigue"
+            id="fatigue_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="fatigue"
+            id="fatigue_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="allergy">Allergies: </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="allergy"
+            id="allergy_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="allergy"
+            id="allergy_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="wheezing">Wheezing: </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="wheezing"
+            id="wheezing_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="wheezing"
+            id="wheezing_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="alcohol_consuming"
+            >Alcohol consumption:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="alcohol_consuming"
+            id="alcohol_consuming_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="alcohol_consuming"
+            id="alcohol_consuming_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="coughing">Coughing: </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="coughing"
+            id="coughing_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="coughing"
+            id="coughing_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="shortness_of_breath"
+            >Shortness of breath:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="shortness_of_breath"
+            id="shortness_of_breath_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="shortness_of_breath"
+            id="shortness_of_breath_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="swallowing_difficulty"
+            >Swallowing difficulty:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="swallowing_difficulty"
+            id="swallowing_difficulty_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="swallowing_difficulty"
+            id="swallowing_difficulty_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <li>
+          <label class="form-check-label" for="chest_pain">Chest pain: </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="chest_pain"
+            id="chest_pain_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="chest_pain"
+            id="chest_pain_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+      </ul>
+    </div>
+    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<hr />
+<div style="margin: auto; width: 60rem">
+  <form
+    action="{% url 'getbatchprediction'%}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <label class="input-group-text" for="csvsubmission"
+      >Or Upload CSV File</label
+    >
+    <input class="form-control" type="file" name="csvsubmission" id="" />
+    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
 <div>{{prediction}}</div>
 {% endblock %}

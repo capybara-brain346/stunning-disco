@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from cancerPrediction.models import cancerPreScreenData
+import pandas as pd
 import numpy as np
 import joblib
 
@@ -45,7 +46,7 @@ def predictForm(request):
     return render(request, "prediction_form.html")
 
 
-def getInput(request):
+def getFormInput(request):
     if request.method == "POST":
         form = request.POST
         form_data = [val for key, val in form.items()]
@@ -60,3 +61,15 @@ def getInput(request):
         return render(
             request, "prediction_form.html", {"form_submission": "No form received"}
         )
+
+
+def getCSVInput(request):
+    if request.method == "POST":
+        if "csvsubmission" in request.FILES:
+            form = request.FILES["csvsubmission"]
+            print(pd.read_csv(form))
+            return render(request, "prediction_form.html", {"prediction": form})
+        else:
+            return HttpResponse("No CSV file submitted", status=400)
+    else:
+        return HttpResponse("Method not allowed", status=405)

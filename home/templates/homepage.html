@@ -1,10 +1,48 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-<div class="card" style="width: 25rem">
-  <img src="{% static 'LCP.png'%}" class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">Cancer Pre Screen Risk Assessment</h5>
+<style>
+  .card {
+    width: 25rem;
+    margin: 50px;
+    border: 2px solid black;
+    transition: box-shadow 0.3s ease;
+  }
+  .card:hover {
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.5);
+  }
+</style>
+<div style="display: flex; justify-content: center">
+  <div class="card" style="width: 25rem; margin: 50px; border: 2px solid black">
+    <img src="{% static 'LCP.png'%}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">Cancer Pre Screen Risk Assessment</h5>
+      <a href="{% url 'getinputforprediction' %}" class="btn btn-primary"
+        >Go ↗️</a
+      >
+    </div>
+  </div>
 
-    <a href="{% url 'cancerpredict' %}" class="btn btn-primary">Go ↗️</a>
+  <div class="card" style="width: 25rem; margin: 50px; border: 2px solid black">
+    <img src="{% static 'CT_SCAN.jpg'%}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">CT-Scan Classifier</h5>
+      <a href="{% url 'getinputforclassification' %}" class="btn btn-primary"
+        >Go ↗️</a
+      >
+    </div>
+  </div>
+  <div class="card" style="width: 25rem; margin: 50px; border: 2px solid black">
+    <img
+      src="{% static 'Diagnostic_Data.jpg'%}"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">Diagnostic Data</h5>
+      <a href="{% url 'getinputforprediction' %}" class="btn btn-primary"
+        >Go ↗️</a
+      >
+    </div>
   </div>
 </div>
+
 {% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html"%} {% block title%} CT-Scan Classifier {% endblock %}
+{%block content %}
+<form
+  action="{% url 'getclassification'%}"
+  method="post"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="subjectName" class="form-label">Enter patient's name:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="subjectName"
+      name="subjectName"
+      required
+    />
+    <label for="subjectEmail" class="form-label"
+      >Enter patients email id:</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="subjectEmail"
+      name="subjectEmail"
+      required
+    />
+    <label for="subjectPhone" class="form-label"
+      >Enter patient phone number:</label
+    >
+    <input
+      type="number"
+      class="form-control"
+      id="subjectPhone"
+      name="subjectPhone"
+      required
+    />
+  </div>
+  <div class="input-group mb-3">
+    <label class="input-group-text" for="lung_scan">Upload</label>
+    <input
+      type="file"
+      class="form-control"
+      id="inputGroupFile02"
+      name="lung_scan"
+    />
+  </div>
+  <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+</form>
+{{classification}} {% endblock %}

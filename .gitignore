@@ -127,6 +127,7 @@ data/
 ENV/
 env.bak/
 venv.bak/
+ctscanClassifier/artifacts/
 
 # Spyder project settings
 .spyderproject

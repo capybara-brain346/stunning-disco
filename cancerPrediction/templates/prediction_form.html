@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% block content %}
-<form action="{% url 'getinput'%}" method="post">
+{% extends 'base.html' %}{% block title%} Cancer Prediction {% endblock %}
+{%block content %}
+<form action="{% url 'getprediction'%}" method="post">
   {% csrf_token %}
   <div class="mb-3">
     <label for="subjectName" class="form-label">Enter patient's name:</label>

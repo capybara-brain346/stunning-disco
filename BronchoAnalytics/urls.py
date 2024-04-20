@@ -22,4 +22,5 @@ urlpatterns = [
     path("", include("home.urls")),
     path("admin/", admin.site.urls),
     path("cancerprediction/", include("cancerPrediction.urls")),
+    path("ctscanclassifier/", include("ctscanClassifier.urls")),
 ]

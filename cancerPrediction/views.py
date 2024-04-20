@@ -1,7 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from cancerPrediction.models import cancerPreScreenData
 import numpy as np
 import joblib
+
+
+def db_commit(patient_info, risk):
+    member = cancerPreScreenData(
+        name=patient_info[1],
+        email=patient_info[2],
+        phone=patient_info[3],
+        age=patient_info[5],
+        gender=patient_info[4],
+        cancer_risk=risk,
+    )
+    member.save()
+    print(cancerPreScreenData.objects.all().values())
+    return None
 
 
 def labelTransform(array_item):
@@ -26,7 +41,7 @@ def getPrediction(array):
     return hmap.get(prediction[0])
 
 
-def predictform(request):
+def predictForm(request):
     return render(request, "prediction_form.html")
 
 
@@ -36,8 +51,9 @@ def getInput(request):
         form_data = [val for key, val in form.items()]
         input_array = scalarTransform(form_data[4:])
         input_array = list(map(labelTransform, input_array))
-        print(input_array)
         prediction = getPrediction(input_array)
+
+        db_commit(form_data, prediction)
 
         return render(request, "prediction_form.html", {"prediction": prediction})
     else:

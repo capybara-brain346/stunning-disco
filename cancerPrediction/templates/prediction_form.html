@@ -15,6 +15,7 @@
         name="subjectName"
         required
       />
+      <br />
       <label for="subjectEmail" class="form-label"
         >Enter patients email id:</label
       >
@@ -24,7 +25,7 @@
         id="subjectEmail"
         name="subjectEmail"
         required
-      />
+      /><br />
       <label for="subjectPhone" class="form-label"
         >Enter patient phone number:</label
       >
@@ -34,7 +35,7 @@
         id="subjectPhone"
         name="subjectPhone"
         required
-      />
+      /><br />
       <ul>
         <li>
           <label class="form-check-label" for="gender">Gender: </label>
@@ -58,6 +59,7 @@
           />
           Female<br />
         </li>
+        <br />
         <li>
           <label class="form-label" for="age">Age: </label>
           <input
@@ -68,6 +70,7 @@
             min="18"
           />
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="smoking">Smoking: </label>
           <input
@@ -89,6 +92,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="yellow_fingers"
             >Yellow fingers:
@@ -112,6 +116,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="anxiety">Anxiety: </label>
           <input
@@ -133,6 +138,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="peer_pressure"
             >Peer pressure to smoke:
@@ -156,6 +162,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="chronic_disease"
             >Chronic disease (e.g., COPD):
@@ -179,6 +186,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="fatigue">Fatigue: </label>
           <input
@@ -200,6 +208,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="allergy">Allergies: </label>
           <input
@@ -221,6 +230,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="wheezing">Wheezing: </label>
           <input
@@ -242,6 +252,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="alcohol_consuming"
             >Alcohol consumption:
@@ -265,6 +276,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="coughing">Coughing: </label>
           <input
@@ -286,6 +298,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="shortness_of_breath"
             >Shortness of breath:
@@ -309,6 +322,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="swallowing_difficulty"
             >Swallowing difficulty:
@@ -332,6 +346,7 @@
           />
           No
         </li>
+        <br />
         <li>
           <label class="form-check-label" for="chest_pain">Chest pain: </label>
           <input
@@ -353,6 +368,7 @@
           />
           No
         </li>
+        <br />
       </ul>
     </div>
     <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
@@ -370,8 +386,10 @@
       >Or Upload CSV File</label
     >
     <input class="form-control" type="file" name="csvsubmission" id="" />
+    <br />
     <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
 <div>{{prediction}}</div>
+<br /><br /><br />
 {% endblock %}

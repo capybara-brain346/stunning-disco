@@ -23,8 +23,8 @@ def db_commit(patient_info, risk):
 def db_commit_csv(patient_data):
 
     field_len = len(patient_data)
-    for _ in range(field_len):
-        data_to_be_committed = patient_data.iloc[_, :]
+    for model_object in range(field_len):
+        data_to_be_committed = patient_data.iloc[model_object, :]
         member = cancerPreScreenData(
             name=data_to_be_committed[0],
             email=data_to_be_committed[1],

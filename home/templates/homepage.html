@@ -34,12 +34,12 @@
     width: 25rem;
     margin: 50px;
     border: 5px solid rgb(255, 255, 255);
-    transition: transform 1s ease, box-shadow 0.1s ease; /* Adjust transition */
+    transition: transform 1s ease, box-shadow 0.1s ease;
   }
 
   .card:hover {
-    box-shadow: 0 5px 10px 10px #3a5bf0; /* Adjust shadow to give lift effect */
-    transform: translateY(-1px); /* Lift up the card on hover */
+    box-shadow: 0 5px 10px 10px #3a5bf0;
+    transform: translateY(-1px);
   }
   .loader {
     border: 16px solid #f3f3f3;
@@ -47,7 +47,7 @@
     border-top: 16px solid #3a5bf0;
     width: 220px;
     height: 220px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
+    -webkit-animation: spin 2s linear infinite;
     animation: spin 0.7s linear infinite;
   }
 
@@ -74,7 +74,7 @@
   setTimeout(function () {
     document.querySelector(".container").style.display = "none";
     document.getElementById("content").style.display = "block";
-  }, 1000); // 3000 milliseconds = 3 seconds
+  }, 1000);
 </script>
 <div class="container">
   <div class="loader" style="margin: auto; margin-top: 300px"></div>

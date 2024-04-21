@@ -18,10 +18,13 @@
     ></script>
     <title>{% block title %} Home {% endblock %}</title>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <body style="background-color: #0e1117">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" style="font-size: 30px" href="{% url 'home' %}"
+        <a
+          class="navbar-brand"
+          style="font-family: Georgia; font-size: 30px"
+          href="{% url 'home' %}"
           >BronchoAnalytics</a
         >
         <button
@@ -42,7 +45,7 @@
                 class="nav-link active"
                 aria-current="page"
                 href="{% url 'home' %}"
-                style="font-size: 25px"
+                style="font-size: 20px"
                 >Home</a
               >
             </li>
@@ -53,10 +56,9 @@
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                style="font-size: 25px"
+                style="font-size: 20px"
+                >Services</a
               >
-                Services
-              </a>
               <ul class="dropdown-menu">
                 <li>
                   <a
@@ -94,6 +96,7 @@
         </div>
       </div>
     </nav>
+
     {% block content %} {% endblock%}
   </body>
 </html>

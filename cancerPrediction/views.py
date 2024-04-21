@@ -20,6 +20,25 @@ def db_commit(patient_info, risk):
     return None
 
 
+def db_commit_csv(patient_data):
+
+    field_len = len(patient_data)
+    for _ in range(field_len):
+        data_to_be_committed = patient_data.iloc[_, :]
+        member = cancerPreScreenData(
+            name=data_to_be_committed[0],
+            email=data_to_be_committed[1],
+            phone=data_to_be_committed[2],
+            gender=data_to_be_committed[3],
+            age=data_to_be_committed[4],
+            cancer_risk=data_to_be_committed[5],
+        )
+        member.save()
+
+    print(cancerPreScreenData.objects.all().values())
+    return None
+
+
 def labelTransform(array_item):
     hmap = {"female": 0, "male": 1, "no": 0, "yes": 1}
     if array_item in hmap.keys():
@@ -94,7 +113,11 @@ def getFormInput(request):
 
         db_commit(form_data, prediction)
 
-        return render(request, "prediction_form.html", {"prediction": prediction})
+        return render(
+            request,
+            "prediction_form.html",
+            {"prediction": prediction, "prediction_csv": " "},
+        )
     else:
         return render(
             request, "prediction_form.html", {"form_submission": "No form received"}
@@ -107,19 +130,19 @@ def getCSVInput(request):
             form = request.FILES["csvsubmission"]
             csv_df = pd.read_csv(form)
             final_data = csv_df.iloc[:, :5]
-            print(csv_df)
             csv_df["Age"] = scalarTransformCSV(csv_df["Age"])
-            print(csv_df)
             input_data = labelTransformCSV(csv_df)
             prediction_col = getPredictionCSV(input_data.iloc[:, 3:])
             final_data["Risk"] = prediction_col
+            db_commit_csv(final_data)
             return render(
                 request,
                 "prediction_form.html",
                 {
-                    "prediction": final_data.to_html(
+                    "prediction": " ",
+                    "prediction_csv": final_data.to_html(
                         classes="table table-striped table-bordered"
-                    )
+                    ),
                 },
             )
         else:

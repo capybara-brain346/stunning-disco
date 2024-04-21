@@ -1,13 +1,20 @@
 {% extends 'base.html' %}{% block title%} Cancer Prediction {% endblock %}
 {%block content %}
-<hr />
-<h1 style="margin-left: 468px">Enter Patient Details</h1>
-<hr />
+
+<hr style="color: aliceblue" />
+<h1 style="margin-left: 468px; color: aliceblue">Enter Patient Details</h1>
+<hr style="color: aliceblue" />
+
 <div style="margin: auto; width: 60rem">
   <form action="{% url 'getprediction'%}" method="post">
     {% csrf_token %}
     <div class="mb-3">
-      <label for="subjectName" class="form-label">Enter patient's name:</label>
+      <label
+        for="subjectName"
+        style="color: aliceblue; font-size: larger"
+        class="form-label"
+        >Enter patient's name:</label
+      >
       <input
         type="text"
         class="form-control"
@@ -16,7 +23,10 @@
         required
       />
       <br />
-      <label for="subjectEmail" class="form-label"
+      <label
+        for="subjectEmail"
+        class="form-label"
+        style="color: aliceblue; font-size: larger"
         >Enter patients email id:</label
       >
       <input
@@ -26,7 +36,10 @@
         name="subjectEmail"
         required
       /><br />
-      <label for="subjectPhone" class="form-label"
+      <label
+        for="subjectPhone"
+        class="form-label"
+        style="color: aliceblue; font-size: larger"
         >Enter patient phone number:</label
       >
       <input
@@ -36,9 +49,14 @@
         name="subjectPhone"
         required
       /><br />
-      <ul>
+      <ul style="color: aliceblue">
         <li>
-          <label class="form-check-label" for="gender">Gender: </label>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="gender"
+            >Gender:
+          </label>
           <br />
           <input
             class="form-check-input"
@@ -61,7 +79,12 @@
         </li>
         <br />
         <li>
-          <label class="form-label" for="age">Age: </label>
+          <label
+            class="form-label"
+            style="color: aliceblue; font-size: larger"
+            for="age"
+            >Age:
+          </label>
           <input
             class="form-control"
             type="number"
@@ -72,7 +95,12 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="smoking">Smoking: </label>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="smoking"
+            >Smoking:
+          </label>
           <input
             class="form-check-input"
             type="radio"
@@ -94,7 +122,10 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="yellow_fingers"
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="yellow_fingers"
             >Yellow fingers:
           </label>
           <input
@@ -118,7 +149,12 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="anxiety">Anxiety: </label>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="anxiety"
+            >Anxiety:
+          </label>
           <input
             class="form-check-input"
             type="radio"
@@ -140,7 +176,10 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="peer_pressure"
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="peer_pressure"
             >Peer pressure to smoke:
           </label>
           <input
@@ -164,7 +203,10 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="chronic_disease"
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="chronic_disease"
             >Chronic disease (e.g., COPD):
           </label>
           <input
@@ -188,7 +230,12 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="fatigue">Fatigue: </label>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="fatigue"
+            >Fatigue:
+          </label>
           <input
             class="form-check-input"
             type="radio"
@@ -210,7 +257,12 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="allergy">Allergies: </label>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="allergy"
+            >Allergies:
+          </label>
           <input
             class="form-check-input"
             type="radio"
@@ -232,7 +284,12 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="wheezing">Wheezing: </label>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="wheezing"
+            >Wheezing:
+          </label>
           <input
             class="form-check-input"
             type="radio"
@@ -254,7 +311,10 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="alcohol_consuming"
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="alcohol_consuming"
             >Alcohol consumption:
           </label>
           <input
@@ -278,7 +338,12 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="coughing">Coughing: </label>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="coughing"
+            >Coughing:
+          </label>
           <input
             class="form-check-input"
             type="radio"
@@ -300,7 +365,10 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="shortness_of_breath"
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="shortness_of_breath"
             >Shortness of breath:
           </label>
           <input
@@ -324,7 +392,10 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="swallowing_difficulty"
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="swallowing_difficulty"
             >Swallowing difficulty:
           </label>
           <input
@@ -348,7 +419,12 @@
         </li>
         <br />
         <li>
-          <label class="form-check-label" for="chest_pain">Chest pain: </label>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="chest_pain"
+            >Chest pain:
+          </label>
           <input
             class="form-check-input"
             type="radio"
@@ -374,7 +450,7 @@
     <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
-<hr />
+<hr style="color: aliceblue" />
 <div style="margin: auto; width: 60rem">
   <form
     action="{% url 'getbatchprediction'%}"
@@ -382,7 +458,10 @@
     enctype="multipart/form-data"
   >
     {% csrf_token %}
-    <label class="input-group-text" for="csvsubmission"
+    <label
+      class="input-group-text"
+      for="csvsubmission"
+      style="color: 0e1117; font-size: larger"
       >Or Upload CSV File</label
     >
     <input
@@ -396,7 +475,12 @@
     <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+<hr style="color: aliceblue" />
+
 <br /><br /><br />
-<div style="margin: auto">{{prediction | safe}}</div>
+<div style="margin: auto">
+  <h5 style="color: aliceblue; margin-left: 473px">{{prediction | safe}}</h5>
+</div>
+<div style="margin: auto">{{prediction_csv | safe}}</div>
 <br /><br /><br />
 {% endblock %}

@@ -385,11 +385,18 @@
     <label class="input-group-text" for="csvsubmission"
       >Or Upload CSV File</label
     >
-    <input class="form-control" type="file" name="csvsubmission" id="" />
+    <input
+      class="form-control"
+      type="file"
+      name="csvsubmission"
+      id=""
+      required
+    />
     <br />
     <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
-<div>{{prediction}}</div>
+<br /><br /><br />
+<div style="margin: auto">{{prediction | safe}}</div>
 <br /><br /><br />
 {% endblock %}

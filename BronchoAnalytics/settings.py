@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "cancerPrediction",
     "home",
     "ctscanClassifier",
+    "diagnosticData",
 ]
 
 MIDDLEWARE = [

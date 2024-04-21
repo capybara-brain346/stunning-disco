@@ -42,6 +42,44 @@ def getPrediction(array):
     return hmap.get(prediction[0])
 
 
+def scalarTransformCSV(array):
+    scalar = joblib.load(r"cancerPrediction\artifacts\minmaxscaler.joblib")
+    arrayTransformed = scalar.transform(np.array(array).reshape(-1, 1))
+    return arrayTransformed
+
+
+def labelTransformCSV(data):
+    hmap = {"female": 0, "male": 1, "no": 0, "yes": 1}
+    tobeTransformed = [
+        "Gender",
+        "Smoking",
+        "Yellow Fingers",
+        "Anxiety",
+        "Peer Pressure",
+        "Chronic Disease",
+        "Fatigue",
+        "Allergies",
+        "Wheezing",
+        "Alcohol",
+        "Coughing",
+        "Shortness of breath",
+        "Shwallowing difficulty",
+        "Chest pain",
+    ]
+
+    for cols in tobeTransformed:
+        data[cols] = data[cols].replace(hmap)
+
+    return data
+
+
+def getPredictionCSV(data):
+    hmap = {0: "Low Risk", 1: "High Risk"}
+    model = joblib.load(r"cancerPrediction\artifacts\modular_svm.joblib")
+    prediction = model.predict(data)
+    return [hmap.get(risk) for risk in prediction]
+
+
 def predictForm(request):
     return render(request, "prediction_form.html")
 
@@ -67,8 +105,23 @@ def getCSVInput(request):
     if request.method == "POST":
         if "csvsubmission" in request.FILES:
             form = request.FILES["csvsubmission"]
-            print(pd.read_csv(form))
-            return render(request, "prediction_form.html", {"prediction": form})
+            csv_df = pd.read_csv(form)
+            final_data = csv_df.iloc[:, :5]
+            print(csv_df)
+            csv_df["Age"] = scalarTransformCSV(csv_df["Age"])
+            print(csv_df)
+            input_data = labelTransformCSV(csv_df)
+            prediction_col = getPredictionCSV(input_data.iloc[:, 3:])
+            final_data["Risk"] = prediction_col
+            return render(
+                request,
+                "prediction_form.html",
+                {
+                    "prediction": final_data.to_html(
+                        classes="table table-striped table-bordered"
+                    )
+                },
+            )
         else:
             return HttpResponse("No CSV file submitted", status=400)
     else:

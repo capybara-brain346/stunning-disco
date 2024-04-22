@@ -143,6 +143,7 @@ def getCSVInput(request):
                     "prediction_csv": final_data.to_html(
                         classes="table table-striped table-bordered"
                     ),
+                    "data": cancerPreScreenData.objects.all().values(),
                 },
             )
         else:

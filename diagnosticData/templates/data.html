@@ -1,3 +1,8 @@
-{% extends "base.html"%} {%block title%}Diagnostic Data {%endblock%} {%block content%}
-<h1 style="color: aliceblue">Route works</h1>
-{%endblock%}
+{% extends "base.html"%} {%block title%}Diagnostic Data {%endblock%} <br />
+{%block content%}
+<div>
+  <h5 style="color: aliceblue; margin-left: 650px; margin-top: 100px">
+    {{data_record | safe}}
+  </h5>
+</div>
+{% endblock %}

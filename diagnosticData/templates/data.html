@@ -1,8 +1,54 @@
 {% extends "base.html"%} {%block title%}Diagnostic Data {%endblock%} <br />
 {%block content%}
+<style>
+  table {
+    width: 100%;
+    margin-left: 420px;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  th {
+    background-color: #3a5bf0;
+    font-weight: bold;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #000000;
+  }
+</style>
+<hr style="color: aliceblue" />
+<div style="margin-left: 420px; color: aliceblue">
+  <h1>Welcome To Diagnostics Dashboard 📊</h1>
+</div>
+<hr style="color: aliceblue" />
+<div style="margin-left: 420px; color: aliceblue">
+  <h1>Cancer Pre Screen Risk Assessment:</h1>
+</div>
+
 <div>
-  <h5 style="color: aliceblue; margin-left: 650px; margin-top: 100px">
-    {{data_record | safe}}
+  <h5 style="color: aliceblue; width: 60%; margin-top: 20px">
+    {{data_record_cp | safe}}
   </h5>
 </div>
+<hr style="color: aliceblue" />
+<div style="margin-left: 420px; color: aliceblue">
+  <h1>CT-Scan Classification:</h1>
+</div>
+<div>
+  <h5 style="color: aliceblue; width: 60%; margin-top: 20px">
+    {{data_record_ct | safe}}
+  </h5>
+</div>
+<br /><br /><br /><br /><br />
+
 {% endblock %}

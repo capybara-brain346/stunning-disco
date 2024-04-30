@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 from ctscanClassifier.models import cancerClassification
 import cv2
 import numpy as np
@@ -43,15 +44,20 @@ def getImageInput(request):
     if request.method == "POST":
         form = request.POST
         form_data = [val for key, val in form.items()]
+
         image = request.FILES["lung_scan"]
+        uploaded_image_url = settings.MEDIA_URL + str(image)
+
         processed_image = preprocess_image(image)
         prediction = get_prediction(processed_image)
 
         db_commit(patient_info=form_data, cancer_type=prediction)
 
         return render(
-            request, "classification_form.html", {"classification": prediction}
+            request,
+            "classification_form.html",
+            {"classification": prediction},
         )
 
     else:
-        return render(request, "classification_form.html", {"classification": "Error"})
+        return render(request, "classification_form.html")

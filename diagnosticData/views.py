@@ -6,5 +6,13 @@ from ctscanClassifier.models import cancerClassification
 
 def dashboard(request):
     cancerPreScreen_df = pd.DataFrame(cancerPreScreenData.objects.all().values())
+    cancerClassification_df = pd.DataFrame(cancerClassification.objects.all().values())
     print(cancerPreScreen_df)
-    return render(request, "data.html", {"data_record": cancerPreScreen_df.to_html()})
+    return render(
+        request,
+        "data.html",
+        {
+            "data_record_cp": cancerPreScreen_df.drop("id", axis=1).to_html(),
+            "data_record_ct": cancerClassification_df.drop("id", axis=1).to_html,
+        },
+    )

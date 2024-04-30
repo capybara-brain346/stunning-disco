@@ -1,8 +1,8 @@
 {% extends "base.html"%} {% block title%} CT-Scan Classifier {% endblock %}
 {%block content %}
-<hr style="color: aliceblue;" />
+<hr style="color: aliceblue" />
 <h1 style="margin-left: 475px; color: aliceblue">Enter Patient Details</h1>
-<hr style="color: aliceblue;" />
+<hr style="color: aliceblue" />
 <div style="margin: auto; width: 60rem">
   <form
     action="{% url 'getclassification'%}"
@@ -56,5 +56,7 @@
     <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
-<hr style="color: aliceblue;">
-<h1 style="color: aliceblue; margin-left: 473px;">{{classification}}</h1> {% endblock %}</h1>
+
+<hr style="color: aliceblue" />
+<h1 style="color: aliceblue; margin-left: 473px">{{classification}}</h1>
+{% endblock %}

@@ -1,0 +1,47 @@
+body {
+    font-family: "Arimo", sans-serif;
+    background-color: #ffffff;
+  }
+  .login {
+    background: #fff;
+    padding: 20px;
+    margin: 100px auto;
+    width: 800px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  }
+  .login h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: "Arimo", cursive;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 3px solid #919191;
+    box-sizing: border-box;
+  }
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    background-color: #fff347;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  html {
+    background-color: #ffffff;
+  }
+  

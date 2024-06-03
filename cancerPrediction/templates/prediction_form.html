@@ -1,0 +1,486 @@
+{% extends 'base.html' %}{% block title%} Cancer Prediction {% endblock %}
+{%block content %}
+
+<hr style="color: aliceblue" />
+<h1 style="margin-left: 468px; color: aliceblue">Enter Patient Details</h1>
+<hr style="color: aliceblue" />
+
+<div style="margin: auto; width: 60rem">
+  <form action="{% url 'getprediction'%}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label
+        for="subjectName"
+        style="color: aliceblue; font-size: larger"
+        class="form-label"
+        >Enter patient's name:</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="subjectName"
+        name="subjectName"
+        required
+      />
+      <br />
+      <label
+        for="subjectEmail"
+        class="form-label"
+        style="color: aliceblue; font-size: larger"
+        >Enter patients email id:</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="subjectEmail"
+        name="subjectEmail"
+        required
+      /><br />
+      <label
+        for="subjectPhone"
+        class="form-label"
+        style="color: aliceblue; font-size: larger"
+        >Enter patient phone number:</label
+      >
+      <input
+        type="number"
+        class="form-control"
+        id="subjectPhone"
+        name="subjectPhone"
+        required
+      /><br />
+      <ul style="color: aliceblue">
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="gender"
+            >Gender:
+          </label>
+          <br />
+          <input
+            class="form-check-input"
+            type="radio"
+            id="gender_male"
+            name="gender"
+            value="male"
+            required
+          />
+          Male<br />
+          <input
+            class="form-check-input"
+            type="radio"
+            id="gender_female"
+            name="gender"
+            value="female"
+            required
+          />
+          Female<br />
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-label"
+            style="color: aliceblue; font-size: larger"
+            for="age"
+            >Age:
+          </label>
+          <input
+            class="form-control"
+            type="number"
+            id="age"
+            name="age"
+            min="18"
+          />
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="smoking"
+            >Smoking:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="smoking"
+            id="smoking_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="smoking"
+            id="smoking_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="yellow_fingers"
+            >Yellow fingers:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="yellow_fingers"
+            id="yellow_fingers_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="yellow_fingers"
+            id="yellow_fingers_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="anxiety"
+            >Anxiety:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="anxiety"
+            id="anxiety_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="anxiety"
+            id="anxiety_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="peer_pressure"
+            >Peer pressure to smoke:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="peer_pressure"
+            id="peer_pressure_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="peer_pressure"
+            id="peer_pressure_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="chronic_disease"
+            >Chronic disease (e.g., COPD):
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="chronic_disease"
+            id="chronic_disease_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="chronic_disease"
+            id="chronic_disease_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="fatigue"
+            >Fatigue:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="fatigue"
+            id="fatigue_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="fatigue"
+            id="fatigue_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="allergy"
+            >Allergies:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="allergy"
+            id="allergy_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="allergy"
+            id="allergy_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="wheezing"
+            >Wheezing:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="wheezing"
+            id="wheezing_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="wheezing"
+            id="wheezing_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="alcohol_consuming"
+            >Alcohol consumption:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="alcohol_consuming"
+            id="alcohol_consuming_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="alcohol_consuming"
+            id="alcohol_consuming_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="coughing"
+            >Coughing:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="coughing"
+            id="coughing_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="coughing"
+            id="coughing_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="shortness_of_breath"
+            >Shortness of breath:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="shortness_of_breath"
+            id="shortness_of_breath_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="shortness_of_breath"
+            id="shortness_of_breath_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="swallowing_difficulty"
+            >Swallowing difficulty:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="swallowing_difficulty"
+            id="swallowing_difficulty_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="swallowing_difficulty"
+            id="swallowing_difficulty_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+        <li>
+          <label
+            class="form-check-label"
+            style="color: aliceblue; font-size: larger"
+            for="chest_pain"
+            >Chest pain:
+          </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="chest_pain"
+            id="chest_pain_yes"
+            value="yes"
+            required
+          />
+          Yes
+          <input
+            class="form-check-input"
+            type="radio"
+            name="chest_pain"
+            id="chest_pain_no"
+            value="no"
+            required
+          />
+          No
+        </li>
+        <br />
+      </ul>
+    </div>
+    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<hr style="color: aliceblue" />
+<div style="margin: auto; width: 60rem">
+  <form
+    action="{% url 'getbatchprediction'%}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <label
+      class="input-group-text"
+      for="csvsubmission"
+      style="color: 0e1117; font-size: larger"
+      >Or Upload CSV File</label
+    >
+    <input
+      class="form-control"
+      type="file"
+      name="csvsubmission"
+      id=""
+      required
+    />
+    <br />
+    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<hr style="color: aliceblue" />
+
+<br /><br /><br />
+<div style="margin: auto">
+  <h5 style="color: aliceblue; margin-left: 473px">{{prediction | safe}}</h5>
+</div>
+<div style="margin: auto">{{prediction_csv | safe}}</div>
+<br /><br /><br />
+{% endblock %}

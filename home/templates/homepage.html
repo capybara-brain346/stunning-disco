@@ -1,0 +1,157 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<style>
+  .flip-in-hor-top {
+    -webkit-animation: flip-in-hor-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      both;
+    animation: flip-in-hor-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @-webkit-keyframes flip-in-hor-top {
+    0% {
+      -webkit-transform: rotateX(-80deg);
+      transform: rotateX(-80deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0);
+      transform: rotateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes flip-in-hor-top {
+    0% {
+      -webkit-transform: rotateX(-80deg);
+      transform: rotateX(-80deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0);
+      transform: rotateX(0);
+      opacity: 1;
+    }
+  }
+  .card {
+    width: 25rem;
+    margin: 50px;
+    border: 5px solid rgb(255, 255, 255);
+    transition: transform 1s ease, box-shadow 0.1s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 5px 10px 10px #ffffff;
+    transform: translateY(-1px);
+  }
+  .loader {
+    border: 16px solid #000000;
+    border-radius: 50%;
+    border-top: 16px solid #ffffff;
+    width: 220px;
+    height: 220px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 0.7s linear infinite;
+  }
+
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+<script>
+  setTimeout(function () {
+    document.querySelector(".container").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  }, 1000);
+</script>
+<div class="container">
+  <div class="loader" style="margin: auto; margin-top: 300px"></div>
+</div>
+<div id="content" style="display: none">
+  <div class="flip-in-hor-top" style="display: flex; justify-content: center">
+    <div
+      class="card"
+      style="
+        width: 25rem;
+        margin: 50px;
+        margin: botton 100px;
+        border: 2px solid rgb(0, 0, 0);
+      "
+    >
+      <img src="{% static 'LCP.png'%}" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Cancer Pre Screen Risk Assessment</h5>
+        <a href="{% url 'getinputforprediction' %}" class="btn btn-primary"
+          >Go ↗️</a
+        >
+        <a
+          href="https://www.cancer.org/cancer/types/lung-cancer/detection-diagnosis-staging/detection.html"
+          class="btn btn-danger"
+          target="_blank"
+          >About? ↗️</a
+        >
+      </div>
+    </div>
+
+    <div
+      class="card"
+      style="width: 25rem; margin: 50px; border: 2px solid rgb(0, 0, 0)"
+    >
+      <img src="{% static 'CT_SCAN.jpg'%}" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">CT-Scan Classifier</h5>
+        <a href="{% url 'getinputforclassification' %}" class="btn btn-primary"
+          >Go ↗️</a
+        >
+        <a
+          href="https://www.radiologyinfo.org/en/info/screening-lung"
+          class="btn btn-danger"
+          target="_blank"
+          >About? ↗️</a
+        >
+      </div>
+    </div>
+    <div
+      class="card"
+      style="width: 25rem; margin: 50px; border: 2px solid rgb(0, 0, 0)"
+    >
+      <img
+        src="{% static 'Diagnostic_Data.jpg'%}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Diagnostic Data</h5>
+        <a href="{% url 'dashboard'%}" class="btn btn-primary">Go ↗️</a>
+      </div>
+    </div>
+  </div>
+  <hr style="color: aliceblue" />
+
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+  <div
+    style="
+      background-color: #383838;
+      padding: 15px;
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      width: 100%;
+    "
+  >
+    <h5 style="color: aliceblue; margin-left: 875px">© PBL Group F</h5>
+  </div>
+</div>
+
+{% endblock %}

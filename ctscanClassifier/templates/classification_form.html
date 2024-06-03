@@ -1,0 +1,62 @@
+{% extends "base.html"%} {% block title%} CT-Scan Classifier {% endblock %}
+{%block content %}
+<hr style="color: aliceblue" />
+<h1 style="margin-left: 475px; color: aliceblue">Enter Patient Details</h1>
+<hr style="color: aliceblue" />
+<div style="margin: auto; width: 60rem">
+  <form
+    action="{% url 'getclassification'%}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <div class="mb-3" style="font-size: large">
+      <label for="subjectName" class="form-label" style="color: aliceblue"
+        >Enter patient's name:</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="subjectName"
+        name="subjectName"
+        required
+      />
+      <label for="subjectEmail" class="form-label" style="color: aliceblue"
+        >Enter patients email id:</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="subjectEmail"
+        name="subjectEmail"
+        required
+      />
+      <label for="subjectPhone" class="form-label" style="color: aliceblue"
+        >Enter patient phone number:</label
+      >
+      <input
+        type="number"
+        class="form-control"
+        id="subjectPhone"
+        name="subjectPhone"
+        required
+      />
+    </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" style="color: #0e1117" for="lung_scan"
+        >Upload</label
+      >
+      <input
+        type="file"
+        class="form-control"
+        id="inputGroupFile02"
+        name="lung_scan"
+      />
+    </div>
+    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<hr style="color: aliceblue" />
+<h1 style="color: aliceblue; margin-left: 473px">{{classification}}</h1>
+{% endblock %}

@@ -46,7 +46,6 @@ def getImageInput(request):
         form_data = [val for key, val in form.items()]
 
         image = request.FILES["lung_scan"]
-        uploaded_image_url = settings.MEDIA_URL + str(image)
 
         processed_image = preprocess_image(image)
         prediction = get_prediction(processed_image)
